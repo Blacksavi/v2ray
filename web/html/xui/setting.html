@@ -32,56 +32,56 @@
             <a-spin :spinning="spinning" :delay="500" tip="loading">
                 <a-space direction="vertical">
                     <a-space direction="horizontal">
-                        <a-button type="primary" :disabled="saveBtnDisable" @click="updateAllSetting">保存配置</a-button>
-                        <a-button type="danger" :disabled="!saveBtnDisable" @click="restartPanel">重启面板</a-button>
+                        <a-button type="primary" :disabled="saveBtnDisable" @click="updateAllSetting">වින්‍යාසය සුරකින්න</a-button>
+                        <a-button type="danger" :disabled="!saveBtnDisable" @click="restartPanel">නැවත ආරම්භ පැනලය</a-button>
                     </a-space>
                     <a-tabs default-active-key="1">
-                        <a-tab-pane key="1" tab="面板配置">
+                        <a-tab-pane key="1" tab="පුවරු වින්යාසය">
                             <a-list item-layout="horizontal" style="background: white">
-                                <setting-list-item type="text" title="面板监听 IP" desc="默认留空监听所有 IP，重启面板生效" v-model="allSetting.webListen"></setting-list-item>
-                                <setting-list-item type="number" title="面板监听端口" desc="重启面板生效" v-model.number="allSetting.webPort"></setting-list-item>
-                                <setting-list-item type="text" title="面板证书公钥文件路径" desc="填写一个 '/' 开头的绝对路径，重启面板生效" v-model="allSetting.webCertFile"></setting-list-item>
-                                <setting-list-item type="text" title="面板证书密钥文件路径" desc="填写一个 '/' 开头的绝对路径，重启面板生效" v-model="allSetting.webKeyFile"></setting-list-item>
-                                <setting-list-item type="text" title="面板 url 根路径" desc="必须以 '/' 开头，以 '/' 结尾，重启面板生效" v-model="allSetting.webBasePath"></setting-list-item>
+                                <setting-list-item type="text" title="පැනල නිරීක්ෂණ IP" desc="පෙරනිමියෙන් සියල්ලට සවන් දීමට හිස්ව තබන්න IP，ක්රියාත්මක වීමට පැනලය නැවත ආරම්භ කරන්න" v-model="allSetting.webListen"></setting-list-item>
+                                <setting-list-item type="number" title="පැනල් සවන්දීමේ වරාය" desc="ක්රියාත්මක වීමට පැනලය නැවත ආරම්භ කරන්න" v-model.number="allSetting.webPort"></setting-list-item>
+                                <setting-list-item type="text" title="පැනල් සහතිකය පොදු යතුරු ගොනු මාර්ගය" desc="එකක් පුරවන්න '/' නිරපේක්ෂ මාර්ගය ආරම්භ වේ，ක්රියාත්මක වීමට පැනලය නැවත ආරම්භ කරන්න" v-model="allSetting.webCertFile"></setting-list-item>
+                                <setting-list-item type="text" title="පැනල් සහතික යතුරු ගොනු මාර්ගය" desc="එකක් පුරවන්න '/' නිරපේක්ෂ මාර්ගය ආරම්භ වේ，ක්රියාත්මක වීමට පැනලය නැවත ආරම්භ කරන්න" v-model="allSetting.webKeyFile"></setting-list-item>
+                                <setting-list-item type="text" title="පැනලය urlමූල මාර්ගය" desc="විය යුතුයි'/' ආරම්භය '/' අවසානය，ක්රියාත්මක වීමට පැනලය නැවත ආරම්භ කරන්න" v-model="allSetting.webBasePath"></setting-list-item>
                             </a-list>
                         </a-tab-pane>
-                        <a-tab-pane key="2" tab="用户设置">
+                        <a-tab-pane key="2" tab="පරිශීලක සැකසුම්">
                             <a-form style="background: white; padding: 20px">
-                                <a-form-item label="原用户名">
+                                <a-form-item label="මුල් පරිශීලක නාමය">
                                     <a-input v-model="user.oldUsername" style="max-width: 300px"></a-input>
                                 </a-form-item>
-                                <a-form-item label="原密码">
+                                <a-form-item label="පැරණි මුරපදය">
                                     <a-input type="password" v-model="user.oldPassword"
                                              style="max-width: 300px"></a-input>
                                 </a-form-item>
-                                <a-form-item label="新用户名">
+                                <a-form-item label="නව පරිශීලක නාමය">
                                     <a-input v-model="user.newUsername" style="max-width: 300px"></a-input>
                                 </a-form-item>
-                                <a-form-item label="新密码">
+                                <a-form-item label="නව මුරපදය">
                                     <a-input type="password" v-model="user.newPassword"
                                              style="max-width: 300px"></a-input>
                                 </a-form-item>
                                 <a-form-item>
-                                    <a-button type="primary" @click="updateUser">修改</a-button>
+                                    <a-button type="primary" @click="updateUser">සංශෝධනය කරන්න</a-button>
                                 </a-form-item>
                             </a-form>
                         </a-tab-pane>
-                        <a-tab-pane key="3" tab="xray 相关设置">
+                        <a-tab-pane key="3" tab="xray අදාළ සැකසුම්">
                             <a-list item-layout="horizontal" style="background: white">
-                                <setting-list-item type="textarea" title="xray 配置模版" desc="以该模版为基础生成最终的 xray 配置文件，重启面板生效" v-model="allSetting.xrayTemplateConfig"></setting-list-item>
+                                <setting-list-item type="textarea" title="xray වින්යාස ආකෘතිය" desc="මෙම සැකිල්ල මත පදනම්ව, අවසාන xray මානකරන ගොනුව，ක්රියාත්මක වීමට පැනලය නැවත ආරම්භ කරන්න" v-model="allSetting.xrayTemplateConfig"></setting-list-item>
                             </a-list>
                         </a-tab-pane>
-                        <a-tab-pane key="4" tab="TG提醒相关设置">
+                        <a-tab-pane key="4" tab="TGමතක් කිරීම් සම්බන්ධ සැකසුම්">
                             <a-list item-layout="horizontal" style="background: white">
-                                <setting-list-item type="switch" title="启用电报机器人" desc="重启面板生效"  v-model="allSetting.tgBotEnable"></setting-list-item>
-                                <setting-list-item type="text" title="电报机器人TOKEN" desc="重启面板生效"  v-model="allSetting.tgBotToken"></setting-list-item>
-                                <setting-list-item type="number" title="电报机器人ChatId" desc="重启面板生效"  v-model.number="allSetting.tgBotChatId"></setting-list-item>
-                                <setting-list-item type="text" title="电报机器人通知时间" desc="采用Crontab定时格式,重启面板生效"  v-model="allSetting.tgRunTime"></setting-list-item>
+                                <setting-list-item type="switch" title="ටෙලිග්‍රාම් බොට් සබල කරන්න" desc="ක්රියාත්මක වීමට පැනලය නැවත ආරම්භ කරන්න"  v-model="allSetting.tgBotEnable"></setting-list-item>
+                                <setting-list-item type="text" title="ටෙලිග්‍රාම් බොට්TOKEN" desc="ක්රියාත්මක වීමට පැනලය නැවත ආරම්භ කරන්න"  v-model="allSetting.tgBotToken"></setting-list-item>
+                                <setting-list-item type="number" title="ටෙලිග්‍රාම් බොට් ChatId" desc="ක්රියාත්මක වීමට පැනලය නැවත ආරම්භ කරන්න"  v-model.number="allSetting.tgBotChatId"></setting-list-item>
+                                <setting-list-item type="text" title="ටෙලිග්‍රාම් බොට් දැනුම්දීමේ වේලාව" desc="භාවිතCrontabකාල ආකෘතිය,ක්රියාත්මක වීමට පැනලය නැවත ආරම්භ කරන්න"  v-model="allSetting.tgRunTime"></setting-list-item>
                             </a-list>
                         </a-tab-pane>
-                        <a-tab-pane key="5" tab="其他设置">
+                        <a-tab-pane key="5" tab="වෙනත් සැකසුම්">
                             <a-list item-layout="horizontal" style="background: white">
-                                <setting-list-item type="text" title="时区" desc="定时任务按照该时区的时间运行，重启面板生效" v-model="allSetting.timeLocation"></setting-list-item>
+                                <setting-list-item type="text" title="වේලා කලාපය" desc="නියමිත කාර්යය කාල කලාපයේ වේලාව අනුව ක්‍රියාත්මක වේ，ක්රියාත්මක වීමට පැනලය නැවත ආරම්භ කරන්න" v-model="allSetting.timeLocation"></setting-list-item>
                             </a-list>
                         </a-tab-pane>
                     </a-tabs>
@@ -138,10 +138,10 @@
             async restartPanel() {
                 await new Promise(resolve => {
                     this.$confirm({
-                        title: '重启面板',
-                        content: '确定要重启面板吗？点击确定将于 3 秒后重启，若重启后无法访问面板，请前往服务器查看面板日志信息',
-                        okText: '确定',
-                        cancelText: '取消',
+                        title: 'නැවත ආරම්භ පැනලය',
+                        content: 'ඔබට පැනලය නැවත ආරම්භ කිරීමට අවශ්‍ය බව විශ්වාසද? OK ක්ලික් කිරීමෙන් සිදුවනු ඇත 3 තත්පර කිහිපයකින් නැවත ආරම්භ කරන්න，නැවත ආරම්භ කිරීමෙන් පසු පැනලයට ප්‍රවේශ විය නොහැකි නම්，පැනල ලොග් තොරතුරු බැලීමට කරුණාකර සේවාදායකය වෙත යන්න',
+                        okText: 'ෂුවර්',
+                        cancelText: 'අවලංගු කරන්න',
                         onOk: () => resolve(),
                     });
                 });
